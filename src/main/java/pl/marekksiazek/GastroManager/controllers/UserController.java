@@ -1,5 +1,6 @@
 package pl.marekksiazek.GastroManager.controllers;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+@Tag(name = "")
 @RestController
 @RequestMapping("/api")
 public class UserController {
