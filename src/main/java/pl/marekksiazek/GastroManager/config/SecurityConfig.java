@@ -28,16 +28,16 @@ public class SecurityConfig{
         http.authorizeHttpRequests(configurer ->
                 configurer
                         .requestMatchers(AUTH_WHITELIST).permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/users/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/users").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/api/users").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/users").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/api/companies").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/api/companies/{id}").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/admin").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/admin/**").hasRole("ADMIN")
         );
 
         http.httpBasic(Customizer.withDefaults());
 
-//        http.csrf(csrf -> csrf.disable());
+        http.csrf(csrf -> csrf.disable());
         return http.build();
     }
 
@@ -46,7 +46,9 @@ public class SecurityConfig{
             "/v3/api-docs/**",
             "/v3/api-docs.yaml",
             "/swagger-ui/**",
-            "/swagger-ui.html"
+            "/swagger-ui.html",
+            "/api/users/**",
+            "/api/users"
     };
 
 //    @Bean
