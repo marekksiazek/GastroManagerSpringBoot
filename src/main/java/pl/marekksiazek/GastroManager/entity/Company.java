@@ -52,4 +52,7 @@ public class Company {
     @NotBlank
     @Column(name = "password")
     private String password;
+
+    @Column(name = "is_deleted")
+    private int isDeleted;
 }

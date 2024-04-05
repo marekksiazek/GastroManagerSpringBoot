@@ -28,6 +28,8 @@ public class SecurityConfig{
         http.authorizeHttpRequests(configurer ->
                 configurer
                         .requestMatchers(AUTH_WHITELIST).permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/api/companies/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT, AUTH_OWNER_PUT).hasAnyRole("ADMIN", "OWNER")
                         .requestMatchers(HttpMethod.POST, AUTH_ADMIN_POST).hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, AUTH_ADMIN_GET).hasRole("ADMIN")
         );
@@ -57,6 +59,10 @@ public class SecurityConfig{
 
     private static final String[] AUTH_ADMIN_POST = {
             "/api/users"
+    };
+
+    private static final String[] AUTH_OWNER_PUT = {
+            "/api/companies/{id}"
     };
 
 //    @Bean
