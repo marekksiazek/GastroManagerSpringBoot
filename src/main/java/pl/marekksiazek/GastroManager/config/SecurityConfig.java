@@ -28,11 +28,8 @@ public class SecurityConfig{
         http.authorizeHttpRequests(configurer ->
                 configurer
                         .requestMatchers(AUTH_WHITELIST).permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/users").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api/companies").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api/companies/{id}").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/admin").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/admin/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, AUTH_ADMIN_POST).hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, AUTH_ADMIN_GET).hasRole("ADMIN")
         );
 
         http.httpBasic(Customizer.withDefaults());
@@ -48,6 +45,17 @@ public class SecurityConfig{
             "/swagger-ui/**",
             "/swagger-ui.html",
             "/api/users/**",
+            "/api/users"
+    };
+
+    private static final String[] AUTH_ADMIN_GET = {
+            "/api/companies",
+            "/api/companies/{id}",
+            "/admin",
+            "/admin/**"
+    };
+
+    private static final String[] AUTH_ADMIN_POST = {
             "/api/users"
     };
 
