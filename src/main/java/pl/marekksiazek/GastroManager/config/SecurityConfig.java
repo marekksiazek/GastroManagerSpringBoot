@@ -48,7 +48,9 @@ public class SecurityConfig{
             "/swagger-ui/**",
             "/swagger-ui.html",
             "/api/users/**",
-            "/api/users"
+            "/api/users",
+            "/api/dailyTasks",
+            "/api/dailyTasks/**"
     };
 
     private static final String[] AUTH_ADMIN_GET = {
