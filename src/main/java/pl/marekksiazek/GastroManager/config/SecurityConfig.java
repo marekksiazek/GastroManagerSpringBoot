@@ -18,7 +18,7 @@ public class SecurityConfig{
     public UserDetailsManager userDetailsManager(DataSource dataSource){
         JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
         jdbcUserDetailsManager.setUsersByUsernameQuery(
-                "SELECT email, user_pwd, active FROM users WHERE email=?");
+                "SELECT email, user_pwd, is_active FROM users WHERE email=?");
         jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(
                 "SELECT email, role FROM users WHERE email=?");
         return jdbcUserDetailsManager;
@@ -29,6 +29,7 @@ public class SecurityConfig{
                 configurer
                         .requestMatchers(AUTH_WHITELIST).permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/api/companies/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "api/users/**").permitAll()
                         .requestMatchers(HttpMethod.PUT, AUTH_OWNER_PUT).hasAnyRole("ADMIN", "OWNER")
                         .requestMatchers(HttpMethod.POST, AUTH_ADMIN_POST).hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, AUTH_ADMIN_GET).hasRole("ADMIN")
@@ -62,7 +63,8 @@ public class SecurityConfig{
     };
 
     private static final String[] AUTH_OWNER_PUT = {
-            "/api/companies/{id}"
+            "/api/companies/{id}",
+            "/api/users/{id}"
     };
 
 //    @Bean

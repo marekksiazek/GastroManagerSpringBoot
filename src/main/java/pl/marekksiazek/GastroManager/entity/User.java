@@ -44,6 +44,9 @@ public class User {
     @Column(name = "role")
     private String role;
 
+    @Column(name = "is_active")
+    private int isActive;
+
     @NotBlank
     @Column(name = "company_id")
     private Long companyId;

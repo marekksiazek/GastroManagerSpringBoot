@@ -35,10 +35,10 @@ public class Company {
     private String street;
 
     @NotBlank
-    @Column(name = "homenumber")
+    @Column(name = "home_number")
     private String homeNumber;
 
-    @Column(name = "localnumber")
+    @Column(name = "local_number")
     private int localNumber;
 
     @NotBlank
