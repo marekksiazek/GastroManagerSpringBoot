@@ -29,7 +29,7 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping(value = "/users")
+    @GetMapping("/users")
     @Operation(
             summary = "Fetch all users",
             description = "Fetch all user entities and their data from data source"
