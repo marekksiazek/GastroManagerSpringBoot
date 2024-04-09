@@ -37,7 +37,7 @@ public class SecurityConfig{
 
         http.httpBasic(Customizer.withDefaults());
 
-        http.csrf(csrf -> csrf.disable());
+//        http.csrf(csrf -> csrf.disable());
         return http.build();
     }
 
@@ -50,7 +50,8 @@ public class SecurityConfig{
             "/api/users/**",
             "/api/users",
             "/api/dailyTasks",
-            "/api/dailyTasks/**"
+            "/api/dailyTasks/**",
+            "/"
     };
 
     private static final String[] AUTH_ADMIN_GET = {
