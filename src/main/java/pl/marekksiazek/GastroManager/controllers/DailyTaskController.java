@@ -124,7 +124,7 @@ public class DailyTaskController {
             @ApiResponse(responseCode = "403", description = "You don't have access to the endpoint", content = @Content),
             @ApiResponse(responseCode = "404", description = "Page not found", content = @Content)
     })
-    public ResponseEntity<User> deleteUser(@Parameter (description = "Daily task entity") @RequestBody DailyTask deletedDailyTask,
+    public ResponseEntity<User> deleteDailyTask(@Parameter (description = "Daily task entity") @RequestBody DailyTask deletedDailyTask,
                                            @Parameter(description = "Daily task id to delete") @PathVariable Long id){
         boolean oldDailyTesk = dailyTaskRepository.findById(id)
                 .map(dailyTask -> {

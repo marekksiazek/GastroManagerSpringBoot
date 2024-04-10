@@ -27,7 +27,7 @@ public class SecurityConfig{
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.authorizeHttpRequests(configurer ->
                 configurer
-                        .requestMatchers(AUTH_WHITELIST).permitAll()
+                        .requestMatchers(HttpMethod.GET, AUTH_WHITELIST).permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/api/companies/**").permitAll()
                         .requestMatchers(HttpMethod.DELETE, "api/users/**").permitAll()
                         .requestMatchers(HttpMethod.PUT, AUTH_OWNER_PUT).hasAnyRole("ADMIN", "OWNER")
@@ -51,6 +51,8 @@ public class SecurityConfig{
             "/api/users",
             "/api/dailyTasks",
             "/api/dailyTasks/**",
+            "/api/tasks",
+            "/api/tasks/**",
             "/"
     };
 
