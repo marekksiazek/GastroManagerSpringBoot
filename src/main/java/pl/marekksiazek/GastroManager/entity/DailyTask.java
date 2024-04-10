@@ -13,7 +13,6 @@ public class DailyTask {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotBlank
     @Column(name="task_id")
     private Long taskId;
 

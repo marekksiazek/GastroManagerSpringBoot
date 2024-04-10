@@ -23,6 +23,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+
 @Tag(name = "Company", description = "Company controller")
 @RestController
 @RequestMapping("/api")
